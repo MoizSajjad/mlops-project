@@ -1,0 +1,27 @@
+name: Flake8 Code Quality Check
+
+on:
+  pull_request:
+    branches:
+      - dev  # Runs on PRs to the dev branch
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Pulls the code
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'  # Specify the Python version
+
+      - name: Install Dependencies
+        run: |
+          pip install flake8  # Install Flake8
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi  # Install dependencies
+
+      - name: Run Flake8
+        run: flake8 .  # Run Flake8 in the entire project
