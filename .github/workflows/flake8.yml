@@ -1,8 +1,10 @@
+<<<<<<< HEAD
 name: Flake8 Code Quality Check
 
 on:
   pull_request:
     branches:
+      - main
       - dev  # Runs on PRs to the dev branch
 
 jobs:
@@ -25,3 +27,29 @@ jobs:
 
       - name: Run Flake8
         run: flake8 .  # Run Flake8 in the entire project
+=======
+name: Flake8 Lint Check
+
+on: [push, pull_request]  # Run this action on push and pull requests
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest  # Use latest Ubuntu as runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Clone the repo
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'  # Use Python 3.8 (or your preferred version)
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8  # Install Flake8 for linting
+
+      - name: Run Flake8
+        run: flake8 .  # Run Flake8 on the entire repo
+>>>>>>> 947f274411f5a233f606c65db0e5adf9691fb8b3
