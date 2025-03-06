@@ -1,0 +1,26 @@
+name: Run Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - test  # Runs when merging into the test branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3  # Pulls the code from GitHub
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'  # Specify the Python version
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt  # Install dependencies (if any)
+
+      - name: Run Unit Tests
+        run: python -m unittest discover tests  # Run tests in the tests/ folder
