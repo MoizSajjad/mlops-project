@@ -1,14 +1,21 @@
 import unittest
+from app import app  # Import the Flask app from app.py
 
-# Example function to test
-def add(a, b):
-    return a + b
 
-class TestAddition(unittest.TestCase):
-    def test_add(self):
-        self.assertEqual(add(2, 3), 5)
-        self.assertEqual(add(-1, 1), 0)
-        self.assertEqual(add(0, 0), 0)
+class TestApp(unittest.TestCase):
+
+    def setUp(self):
+        """Set up the test client."""
+        self.app = app.test_client()
+        self.app.testing = True
+
+    def test_home(self):
+        """Test the home route."""
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), "Hello, MLOps!")
+
 
 if __name__ == "__main__":
     unittest.main()
+
