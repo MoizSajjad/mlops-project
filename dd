@@ -1,0 +1,44 @@
+[1mdiff --git a/.github/workflows/flake8.yml b/.github/workflows/flake8.yml[m
+[1mindex eb7aebe..f3eca5f 100644[m
+[1m--- a/.github/workflows/flake8.yml[m
+[1m+++ b/.github/workflows/flake8.yml[m
+[36m@@ -1,34 +1,3 @@[m
+[31m-<<<<<<< HEAD[m
+[31m-name: Flake8 Code Quality Check[m
+[31m-[m
+[31m-on:[m
+[31m-  pull_request:[m
+[31m-    branches:[m
+[31m-      - main[m
+[31m-      - dev  # Runs on PRs to the dev branch[m
+[31m-[m
+[31m-[m
+[31m-jobs:[m
+[31m-  lint:[m
+[31m-    runs-on: ubuntu-latest[m
+[31m-[m
+[31m-    steps:[m
+[31m-      - name: Checkout Repository[m
+[31m-        uses: actions/checkout@v3  # Pulls the code[m
+[31m-[m
+[31m-      - name: Set up Python[m
+[31m-        uses: actions/setup-python@v3[m
+[31m-        with:[m
+[31m-          python-version: '3.9'  # Specify the Python version[m
+[31m-[m
+[31m-      - name: Install Dependencies[m
+[31m-        run: |[m
+[31m-          pip install flake8  # Install Flake8[m
+[31m-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi  # Install dependencies[m
+[31m-[m
+[31m-      - name: Run Flake8[m
+[31m-        run: flake8 .  # Run Flake8 in the entire project[m
+[31m-=======[m
+ name: Flake8 Lint Check[m
+ [m
+ on: [push, pull_request]  # Run this action on push and pull requests[m
+[36m@@ -53,4 +22,3 @@[m [mjobs:[m
+ [m
+       - name: Run Flake8[m
+         run: flake8 .  # Run Flake8 on the entire repo[m
+[31m->>>>>>> 947f274411f5a233f606c65db0e5adf9691fb8b3[m
