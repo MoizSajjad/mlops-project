@@ -11,11 +11,10 @@ class TestApp(unittest.TestCase):
 
     def test_home(self):
         """Test the home route."""
-        response = self.app.get('/')
+        response = self.app.get("/")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data.decode(), "Hello, MLOps!")
 
 
 if __name__ == "__main__":
     unittest.main()
-
