@@ -1,2 +1,6 @@
-flask
 flake8
+flask
+scikit-learn
+pandas
+numpy
+
